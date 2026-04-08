@@ -1,0 +1,67 @@
+﻿@model IEnumerable<EcoAbastoSv.Models.Producto>
+
+@{
+    ViewData["Title"] = "Control de Precios - El Salvador";
+}
+
+<div class="container mt-4">
+    <div class="text-center mb-5">
+        <h1 class="display-4 text-primary">EcoAbasto SV</h1>
+        <p class="lead">Monitoreo de la Canasta Básica Salvadoreña</p>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <a asp-action="Create" class="btn btn-success"> + Registrar Nuevo Precio</a>
+        </div>
+        <div class="col-md-6 text-end">
+            <form asp-action="Index" method="get" class="d-flex justify-content-end">
+                <select name="depto" class="form-select w-50 me-2">
+                    <option value="">Todos los Departamentos</option>
+                    <option value="San Salvador">San Salvador</option>
+                    <option value="Santa Ana">Santa Ana</option>
+                    <option value="San Miguel">San Miguel</option>
+                    <option value="La Libertad">La Libertad</option>
+                </select>
+                <button type="submit" class="btn btn-outline-primary">Filtrar</button>
+            </form>
+        </div>
+    </div>
+
+    <table class="table table-hover shadow-sm border">
+        <thead class="table-dark">
+            <tr>
+                <th>Producto</th>
+                <th>Precio Actual</th>
+                <th>Departamento</th>
+                <th>Estado Stock</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="@(item.EsPrecioAlto ? "table-warning" : "")">
+                    <td><strong>@item.Nombre</strong></td>
+                    <td>$@item.Precio</td>
+                    <td>@item.Departamento</td>
+                    <td>
+                        @if (item.Stock < 10)
+                        {
+                            <span class="badge bg-danger">Escasez</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-success">Abastecido</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Borrar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+*/

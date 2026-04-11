@@ -6,22 +6,22 @@ namespace EcoAbastoSv.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "El nombre es obligatorio")]
-        [Display(Name = "Nombre del Producto")]
-        public string Nombre { get; set; }
+        [Required(ErrorMessage = "El nombre del producto es obligatorio.")]
+        [StringLength(50, ErrorMessage = "El nombre no puede exceder los 50 caracteres.")]
+        public string Nombre { get; set; } = string.Empty;
 
-        [Required]
-        [Range(0.01, 1000.00)]
-        [Display(Name = "Precio ($)")]
+        [Required(ErrorMessage = "El precio es obligatorio.")]
+        [Range(0.01, 10000, ErrorMessage = "El precio debe ser un valor mayor a 0.")]
         public decimal Precio { get; set; }
 
-        [Required]
-        public string Departamento { get; set; }
+        [Required(ErrorMessage = "Debe seleccionar un departamento.")]
+        public string Departamento { get; set; } = string.Empty;
 
-        [Display(Name = "Cantidad disponible")]
+        // ESTA PROPIEDAD CORRIGE EL ERROR DE LA VISTA INDEX
+        [Required(ErrorMessage = "El stock es obligatorio.")]
         public int Stock { get; set; }
 
-        // Lógica simple para la alerta de precio alto (Ejemplo: mas de $5.00 es caro para granos)
+        // ESTA PROPIEDAD CORRIGE EL ERROR DE "EsPrecioAlto" EN LA TABLA
         public bool EsPrecioAlto => Precio > 5.00m;
     }
 }

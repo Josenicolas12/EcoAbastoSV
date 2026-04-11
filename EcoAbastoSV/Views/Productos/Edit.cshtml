@@ -1,0 +1,42 @@
+﻿@model EcoAbastoSv.Models.Producto
+
+@{
+    ViewData["Title"] = "Editar Producto";
+}
+
+<div class="text-center">
+    <h1 class="display-4" style="color: #2b6cb0;">📝 Editar Registro</h1>
+    <p class="lead">Actualiza la información del producto seleccionado.</p>
+</div>
+
+<div class="comic-box" style="max-width: 450px; margin: 20px auto; border-color: #4299e1; background-color: #f0f7ff;">
+    <form asp-action="Edit">
+        @* Este campo oculto es vital para que el sistema sepa qué ID estamos editando *@
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group mb-3 text-start">
+            <label class="control-label"><b>Nombre del Producto</b></label>
+            <input asp-for="Nombre" class="form-control" />
+        </div>
+
+        <div class="form-group mb-3 text-start">
+            <label class="control-label"><b>Precio Actual ($)</b></label>
+            <input asp-for="Precio" class="form-control" type="number" step="0.01" />
+        </div>
+
+        <div class="form-group mb-4 text-start">
+            <label class="control-label"><b>Departamento</b></label>
+            <select asp-for="Departamento" class="form-control">
+                <option value="San Salvador">San Salvador</option>
+                <option value="Santa Ana">Santa Ana</option>
+                <option value="San Miguel">San Miguel</option>
+                <option value="La Libertad">La Libertad</option>
+            </select>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-lg w-100 mb-2">Guardar Cambios</button>
+            <a asp-action="Index" class="btn btn-outline-secondary btn-sm">Cancelar y volver</a>
+        </div>
+    </form>
+</div>

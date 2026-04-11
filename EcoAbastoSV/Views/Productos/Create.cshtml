@@ -1,0 +1,39 @@
+﻿@model EcoAbastoSv.Models.Producto
+
+@{
+    ViewData["Title"] = "Registrar Precio";
+}
+
+<div class="text-center">
+    <h1 class="display-4" style="color: #2d5a27;">🍎 Nuevo Registro</h1>
+    <p class="lead">Ingresa los detalles del producto para actualizar el mercado.</p>
+</div>
+
+<div class="comic-box" style="max-width: 450px; margin: 20px auto; padding: 25px;">
+    <form asp-action="Create">
+        <div class="form-group mb-3">
+            <label class="control-label"><b>Nombre del Producto</b></label>
+            <input asp-for="Nombre" class="form-control" placeholder="Ej. Maíz Blanco" />
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="control-label"><b>Precio ($)</b></label>
+            <input asp-for="Precio" class="form-control" type="number" step="0.01" placeholder="0.00" />
+        </div>
+
+        <div class="form-group mb-4">
+            <label class="control-label"><b>Departamento</b></label>
+            <select asp-for="Departamento" class="form-control">
+                <option value="San Salvador">San Salvador</option>
+                <option value="Santa Ana">Santa Ana</option>
+                <option value="San Miguel">San Miguel</option>
+                <option value="La Libertad">La Libertad</option>
+            </select>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btn-lg w-100 mb-3">✅ Guardar Producto</button>
+            <a asp-action="Index" class="btn btn-link" style="color: #666;">← Volver a la lista</a>
+        </div>
+    </form>
+</div>

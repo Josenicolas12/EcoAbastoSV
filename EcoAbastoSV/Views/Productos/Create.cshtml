@@ -6,54 +6,59 @@
 
 <div class="text-center">
     <h1 class="display-4" style="color: #2d5a27;">📦 Nuevo Registro</h1>
-    <p class="lead">Ingresa los detalles del producto para actualizar el mercado.</p>
+    <p class="lead">Ingresa los detalles para fortalecer el inventario.</p>
 </div>
 
-<div class="comic-box shadow-lg" style="max-width: 500px; margin: 20px auto; padding: 30px; border-radius: 15px; background-color: #f9f9f9;">
+<div class="shadow-lg" style="max-width: 500px; margin: 20px auto; padding: 30px; border-radius: 15px; background-color: #f9f9f9; border: 1px solid #ddd;">
     <form asp-action="Create">
-        @* Resumen de errores generales *@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="form-group mb-3">
-            <label asp-for="Nombre" class="control-label"><b>Nombre del Producto</b></label>
+            <label asp-for="Nombre" class="fw-bold"></label>
             <input asp-for="Nombre" class="form-control" placeholder="Ej. Maíz Blanco" />
-            @* MENSAJE DE VALIDACIÓN *@
             <span asp-validation-for="Nombre" class="text-danger"></span>
         </div>
 
+        <div class="row">
+            <div class="col-md-6 form-group mb-3">
+                <label asp-for="Precio" class="fw-bold"></label>
+                <input asp-for="Precio" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="col-md-6 form-group mb-3">
+                <label asp-for="Stock" class="fw-bold"></label>
+                <input asp-for="Stock" class="form-control" type="number" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+        </div>
+
         <div class="form-group mb-3">
-            <label asp-for="Precio" class="control-label"><b>Precio ($)</b></label>
-            <input asp-for="Precio" class="form-control" type="number" step="0.01" placeholder="0.00" />
-            @* MENSAJE DE VALIDACIÓN *@
-            <span asp-validation-for="Precio" class="text-danger"></span>
+            <label asp-for="Categoria" class="fw-bold">Categoría</label>
+            <select asp-for="Categoria" class="form-control">
+                <option value="">-- Seleccione --</option>
+                <option value="Granos Básicos">Granos Básicos</option>
+                <option value="Lácteos y Huevos">Lácteos y Huevos</option>
+                <option value="Carnes">Carnes</option>
+                <option value="Verduras">Verduras</option>
+            </select>
+            <span asp-validation-for="Categoria" class="text-danger"></span>
         </div>
 
         <div class="form-group mb-4">
-            <label asp-for="Departamento" class="control-label"><b>Departamento</b></label>
+            <label asp-for="Departamento" class="fw-bold"></label>
             <select asp-for="Departamento" class="form-control">
-                <option value="">-- Seleccione un departamento --</option>
+                <option value="">-- Seleccione --</option>
                 <option value="San Salvador">San Salvador</option>
                 <option value="Santa Ana">Santa Ana</option>
                 <option value="San Miguel">San Miguel</option>
                 <option value="La Libertad">La Libertad</option>
             </select>
-            @* MENSAJE DE VALIDACIÓN *@
             <span asp-validation-for="Departamento" class="text-danger"></span>
         </div>
 
         <div class="text-center">
-            <button type="submit" class="btn btn-success btn-lg w-100 mb-3">
-                ✅ Guardar Producto
-            </button>
-            <a asp-action="Index" class="btn btn-link" style="color: #666;">
-                ↩️ Volver a la lista
-            </a>
+            <button type="submit" class="btn btn-success btn-lg w-100 mb-3">✅ Guardar Producto</button>
+            <a asp-action="Index" class="btn btn-link text-muted">Volver a la lista</a>
         </div>
     </form>
 </div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

@@ -7,11 +7,13 @@ namespace EcoAbastoSv.Controllers
 {
     public class ProductosController : Controller
     {
+        // Lista con datos iniciales realistas para El Salvador
         private static List<Producto> listaProductos = new List<Producto>
         {
-            new Producto { Id = 1, Nombre = "Frijol Rojo", Precio = 1.25m, Departamento = "San Salvador", Stock = 5, Categoria = "Granos Básicos" },
-            new Producto { Id = 2, Nombre = "Maíz Blanco", Precio = 0.80m, Departamento = "Santa Ana", Stock = 50, Categoria = "Granos Básicos" },
-            new Producto { Id = 3, Nombre = "Huevos (Cartón)", Precio = 4.50m, Departamento = "San Miguel", Stock = 2, Categoria = "Lácteos y Huevos" }
+            new Producto { Id = 1, Nombre = "Frijol Rojo (lb)", Precio = 1.25m, Departamento = "San Salvador", Stock = 5, Categoria = "Granos Básicos" },
+            new Producto { Id = 2, Nombre = "Maíz Blanco (lb)", Precio = 0.80m, Departamento = "Santa Ana", Stock = 50, Categoria = "Granos Básicos" },
+            new Producto { Id = 3, Nombre = "Huevos (Cartón 30 unidades)", Precio = 4.50m, Departamento = "San Miguel", Stock = 2, Categoria = "Lácteos y Huevos" },
+            new Producto { Id = 4, Nombre = "Arroz Blanco (lb)", Precio = 0.55m, Departamento = "La Libertad", Stock = 100, Categoria = "Granos Básicos" }
         };
 
         public IActionResult Index() => View("Listado", listaProductos);

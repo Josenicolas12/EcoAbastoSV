@@ -22,8 +22,8 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Productos}/{action=Index}/{id?}")
+    // CAMBIO AQUÍ: Cambiamos Productos por Home e Index
+    pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
-
 
 app.Run();

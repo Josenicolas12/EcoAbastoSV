@@ -1,12 +1,129 @@
 ﻿@{
-    ViewData["Title"] = "Inicio EcoAbastoSV";
+    ViewData["Title"] = "EcoAbasto SV";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Panel de Control</h1>
-</div>
+<style>
+    /* Estética Minimalista Galáctica / Dark Forest */
+    body {
+        background: #0f172a; /* Fondo azul noche profundo */
+        margin: 0;
+        overflow-x: hidden;
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
 
-<div class="comic-box">
-    <h2>🏆 Producto más vendido</h2>
-    <p>@ViewBag.TopProducto</p>
+    .hero-wrapper {
+        height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    /* Luces de fondo (Aura) */
+    .aura {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        filter: blur(120px);
+        z-index: 0;
+        opacity: 0.4;
+    }
+
+    .aura-green { background: #10b981; top: -10%; left: -5%; }
+    .aura-blue { background: #3b82f6; bottom: -10%; right: -5%; }
+
+    /* Tarjeta Principal */
+    .main-card {
+        z-index: 10;
+        background: rgba(30, 41, 59, 0.7); /* Azul pizarra traslúcido */
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 80px 50px;
+        border-radius: 40px;
+        text-align: center;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        max-width: 850px;
+    }
+
+    .title-logo {
+        font-size: 5.5rem;
+        font-weight: 900;
+        letter-spacing: -4px;
+        margin-bottom: 20px;
+        color: #ffffff;
+    }
+
+    /* Efecto de degradado animado en el SV */
+    .highlight {
+        background: linear-gradient(90deg, #10b981, #3b82f6, #10b981);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shine 3s linear infinite;
+    }
+
+    @@keyframes shine {
+        to { background-position: 200% center; }
+    }
+
+    .description {
+        color: #94a3b8;
+        font-size: 1.4rem;
+        font-weight: 300;
+        margin-bottom: 50px;
+        line-height: 1.6;
+    }
+
+    /* Botón Neón */
+    .btn-neon {
+        position: relative;
+        padding: 20px 60px;
+        background: #10b981;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.2rem;
+        border-radius: 15px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.4s;
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+        border: none;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .btn-neon:hover {
+        background: #ffffff;
+        color: #10b981;
+        box-shadow: 0 0 40px rgba(16, 185, 129, 0.7);
+        transform: scale(1.05);
+    }
+
+    .btn-neon i {
+        margin-left: 15px;
+        font-size: 1.5rem;
+    }
+</style>
+
+<div class="hero-wrapper">
+    <div class="aura aura-green"></div>
+    <div class="aura aura-blue"></div>
+
+    <div class="main-card">
+        <h1 class="title-logo">
+            ECOABASTO<span class="highlight">SV</span>
+        </h1>
+        
+        <p class="description">
+            Monitoreo inteligente de la canasta básica. 
+            <br />
+            <strong>Transparencia nacional</strong> en tiempo real.
+        </p>
+
+        <a asp-controller="Productos" asp-action="Index" class="btn-neon">
+            Entrar al Sistema <i class="bi bi-arrow-right-short"></i>
+        </a>
+    </div>
 </div>

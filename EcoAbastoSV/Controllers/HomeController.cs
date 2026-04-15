@@ -1,22 +1,14 @@
-using EcoAbastoSv.Models;
-using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+using EcoAbastoSv.Models;
 
 namespace EcoAbastoSv.Controllers
 {
     public class HomeController : Controller
     {
+        // Este es el método que abrirá la página bonita que diseñamos
         public IActionResult Index()
         {
-            // Simulación rápida (para commit)
-            var top = new TopProducto
-            {
-                Nombre = "Huevos",
-                Ventas = 70
-            };
-
-            ViewBag.TopProducto = top.Nombre + " (" + top.Ventas + " ventas)";
-
             return View();
         }
 

@@ -6,27 +6,25 @@ namespace EcoAbastoSv.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "El nombre es obligatorio.")]
-        [Display(Name = "Nombre del Producto")]
+        [Required(ErrorMessage = "El nombre del producto es obligatorio.")]
+        [Display(Name = "Producto")]
         public string Nombre { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "El precio es obligatorio.")]
-        [Range(0.01, 10000, ErrorMessage = "El precio debe ser mayor a 0.")]
+        [Range(0.01, 9999.99, ErrorMessage = "El precio debe ser un número mayor a 0.")]
         [Display(Name = "Precio ($)")]
-        public decimal Precio { get; set; }
+        // El ? permite que el Required atrape el error antes que el sistema
+        public decimal? Precio { get; set; }
+
+        [Required(ErrorMessage = "La cantidad es obligatoria.")]
+        [Range(0, 10000, ErrorMessage = "El stock no puede ser negativo.")]
+        [Display(Name = "Cantidad")]
+        public int? Stock { get; set; }
+
+        [Required(ErrorMessage = "La categoría es obligatoria.")]
+        public string Categoria { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Debe seleccionar un departamento.")]
         public string Departamento { get; set; } = string.Empty;
-
-        [Required(ErrorMessage = "La categoría es obligatoria.")]
-        [Display(Name = "Categoría")]
-        public string Categoria { get; set; } = string.Empty;
-
-        [Required(ErrorMessage = "El stock es obligatorio.")]
-        [Range(0, 5000, ErrorMessage = "El stock no puede ser negativo.")]
-        [Display(Name = "Cantidad en Stock")]
-        public int Stock { get; set; }
-
-        public bool EsPrecioAlto => Precio > 5.00m;
     }
 }

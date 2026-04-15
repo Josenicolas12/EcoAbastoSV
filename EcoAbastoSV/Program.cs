@@ -17,7 +17,13 @@ app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseAuthorization();
+var supportedCultures = new[] { "es-SV", "es-US" };
+var localizationOptions = new RequestLocalizationOptions()
+    .SetDefaultCulture(supportedCultures[0])
+    .AddSupportedCultures(supportedCultures)
+    .AddSupportedUICultures(supportedCultures);
 
+app.UseRequestLocalization(localizationOptions);
 app.MapStaticAssets();
 
 app.MapControllerRoute(

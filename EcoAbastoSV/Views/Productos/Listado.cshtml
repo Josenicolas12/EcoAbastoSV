@@ -24,7 +24,7 @@
                     <td class="fw-bold">@item.Nombre</td>
                     <td>@item.Categoria</td>
                     @* Forzamos el símbolo de dólar y 2 decimales *@
-                    <td>$@item.Precio.ToString("N2")</td>
+                    <td>$@item.Precio?.ToString("N2")</td>
                     <td>@item.Departamento</td>
                     <td>
                         @if (item.Stock == 0)

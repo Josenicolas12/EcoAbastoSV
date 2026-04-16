@@ -41,7 +41,7 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr class="@(item.EsPrecioAlto ? "table-warning" : "")">
+                <tr class="@(item.Precio > 50? "table-warning" : "")">
                     <td><strong>@item.Nombre</strong></td>
                     <td>$@item.Precio</td>
                     <td>@item.Departamento</td>

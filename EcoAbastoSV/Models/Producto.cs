@@ -13,7 +13,6 @@ namespace EcoAbastoSv.Models
         [Required(ErrorMessage = "El precio es obligatorio.")]
         [Range(0.01, 9999.99, ErrorMessage = "El precio debe ser un número mayor a 0.")]
         [Display(Name = "Precio ($)")]
-        // El ? permite que el Required atrape el error antes que el sistema
         public decimal? Precio { get; set; }
 
         [Required(ErrorMessage = "La cantidad es obligatoria.")]
@@ -26,5 +25,6 @@ namespace EcoAbastoSv.Models
 
         [Required(ErrorMessage = "Debe seleccionar un departamento.")]
         public string Departamento { get; set; } = string.Empty;
+        public bool EsEscaso => Stock.HasValue && Stock.Value < 50;
     }
 }

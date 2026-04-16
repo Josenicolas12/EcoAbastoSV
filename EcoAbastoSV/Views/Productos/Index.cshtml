@@ -28,6 +28,33 @@
         </div>
     </div>
 
+    <div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card bg-primary text-white shadow">
+            <div class="card-body text-center">
+                <h6>Total Productos</h6>
+                <h3>@Model.Count()</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-danger text-white shadow">
+            <div class="card-body text-center">
+                <h6>Productos en Escasez</h6>
+                <h3>@Model.Count(p => p.Stock < 10)</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-success text-white shadow">
+            <div class="card-body text-center">
+                <h6>Inversión Total</h6>
+                <h3>$@Model.Sum(p => (p.Precio ?? 0) * (p.Stock ?? 0)).ToString("N2")</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
     <table class="table table-hover shadow-sm border">
         <thead class="table-dark">
             <tr>
@@ -41,7 +68,7 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr class="@(item.Precio > 50? "table-warning" : "")">
+                <tr class="@(item.Precio > 5? "table-warning" : "")">
                     <td><strong>@item.Nombre</strong></td>
                     <td>$@item.Precio</td>
                     <td>@item.Departamento</td>

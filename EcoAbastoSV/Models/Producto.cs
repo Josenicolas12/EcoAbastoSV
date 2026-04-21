@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EcoAbastoSv.Models
 {
@@ -12,6 +13,7 @@ namespace EcoAbastoSv.Models
 
         [Required(ErrorMessage = "El precio es obligatorio.")]
         [Range(0.01, 9999.99, ErrorMessage = "El precio debe ser un número mayor a 0.")]
+        [Column(TypeName = "decimal(18,2)")]
         [Display(Name = "Precio ($)")]
         public decimal? Precio { get; set; }
 
@@ -25,6 +27,8 @@ namespace EcoAbastoSv.Models
 
         [Required(ErrorMessage = "Debe seleccionar un departamento.")]
         public string Departamento { get; set; } = string.Empty;
+ 
+        [NotMapped]
         public bool EsEscaso => Stock.HasValue && Stock.Value < 10;
     }
 }

@@ -68,7 +68,7 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr class="@(item.Precio > 5? "table-warning" : "")">
+                <tr class="@(item.Precio > 50? "table-warning" : "")">
                     <td><strong>@item.Nombre</strong></td>
                     <td>$@item.Precio</td>
                     <td>@item.Departamento</td>
@@ -91,4 +91,3 @@
         </tbody>
     </table>
 </div>
-*/

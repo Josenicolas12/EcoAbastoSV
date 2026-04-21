@@ -25,6 +25,6 @@ namespace EcoAbastoSv.Models
 
         [Required(ErrorMessage = "Debe seleccionar un departamento.")]
         public string Departamento { get; set; } = string.Empty;
-        public bool EsPrecioAlto => Precio.HasValue && Precio.Value > 5;
+        public bool EsEscaso => Stock.HasValue && Stock.Value < 10;
     }
 }

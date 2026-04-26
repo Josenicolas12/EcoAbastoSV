@@ -84,10 +84,34 @@
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info">Editar</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Borrar</a>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="confirmarEliminar(@item.Id, '@item.Nombre')">
+                            Borrar
+                        </button>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
+<script>
+    function confirmarEliminar(id, nombre) {
+        Swal.fire({
+            title: '¿Confirmar eliminación?',
+            text: "Estás a punto de borrar: " + nombre,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#198754',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, borrar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const form = document.createElement('form');
+                form.method = 'post';
+                form.action = '/Productos/Delete/' + id;
+                document.body.appendChild(form);
+                form.submit();
+            }
+        })
+    }
+</script>

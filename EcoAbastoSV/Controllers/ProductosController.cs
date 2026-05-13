@@ -17,7 +17,17 @@ namespace EcoAbastoSv.Controllers
             _productoService = productoService;
         }
 
-        public IActionResult Index() => View(_context.Productos.ToList());
+        public IActionResult Index(string buscar)
+        {
+            var productos = from p in _context.Productos select p;
+
+            if (!string.IsNullOrEmpty(buscar))
+            {
+                productos = productos.Where(s => s.Nombre.Contains(buscar));
+            }
+
+            return View(productos.ToList());
+        }
 
         public IActionResult Create() => View();
 
